@@ -1,8 +1,21 @@
 #+TITLE: StumpWM Configuration
 #+AUTHOR: Kenneth W Brown III
+#+PROPERTY: header-args    :tangle yes
 
-#+BEGIN_SRC lisp :tangle yes
+This is my first stab at getting StumpWM up and comfy.
+
+* Package declaration
+
+#+BEGIN_SRC lisp 
+
 (in-package :stumpwm)
 
-(setf *startup-message* "Never Stop Hacking!")
+#+END_SRC
+
+* Welcome Message
+
+#+BEGIN_SRC lisp 
+
+(setf *startup-message* "Never Stop Never Stopping Hacking!")
+
 #+END_SRC
