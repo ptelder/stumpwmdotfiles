@@ -1,0 +1,8 @@
+#+TITLE: StumpWM Configuration
+#+AUTHOR: Kenneth W Brown III
+
+#+BEGIN_SRC lisp :tangle yes
+(in-package :stumpwm)
+
+(setf *startup-message* "Never Stop Never Stopping Hacking!")
+#+END_SRC
