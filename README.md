@@ -1,2 +1,0 @@
-# stumpwmdotfiles
-Digging the Stump
