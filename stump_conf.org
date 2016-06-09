@@ -4,5 +4,5 @@
 #+BEGIN_SRC lisp :tangle yes
 (in-package :stumpwm)
 
-(setf *startup-message* "Never Stop Never Stopping Hacking!")
+(setf *startup-message* "Never Stop Hacking!")
 #+END_SRC
