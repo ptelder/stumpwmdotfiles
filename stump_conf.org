@@ -16,6 +16,15 @@ This is my first stab at getting StumpWM up and comfy.
 
 #+BEGIN_SRC lisp 
 
-(setf *startup-message* "Never Stop Never Stopping Hacking!")
-
+(setf *startup-message*         
+  (format nil "~{~A~^ ~}" 
+    (let ((p (sb-ext:run-program "/usr/bin/fortune" '("-as" "-n 120") :output :stream)))
+      (when p
+        (unwind-protect
+          (with-open-stream (o (sb-ext:process-output p))
+            (loop
+              :for line := (read-line o nil nil)
+              :while line
+              :collect line))
+          (sb-ext:process-close p))))))
 #+END_SRC
