@@ -2,4 +2,4 @@
 
 (package-initialize)
 (require 'ob-tangle)
-(org-babel-tangle-file "./stump_conf.org")
+(org-babel-tangle-file (expand-file-name "~/.stumpwm.d/stump_conf.org"))

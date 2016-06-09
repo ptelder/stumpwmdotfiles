@@ -22,5 +22,13 @@
 		    (namestring (probe-file "."))
 		    ".stumpwm.d/"
 		    "stump_conf.lisp"))
- (setf *startup-message* "Tangled stump_conf.lisp missing!")
- )
+ (progn
+   (sb-ext:run-program (concatenate 'string
+				    (namestring (probe-file "."))
+				    ".stumpwm.d/"
+				    "tangle.elisp")
+		       ())
+    (load (concatenate 'string
+		    (namestring (probe-file "."))
+		    ".stumpwm.d/"
+		    "stump_conf.lisp"))))
