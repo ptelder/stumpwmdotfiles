@@ -11,24 +11,23 @@
 ;; Now we just have to tangle if missing, then do the freshness check.
 ;; The func FILE-WRITE-DATE will spit out the unix time for a file
 
-(if
- (probe-file
+
+(defvar *tangled-path*
   ;; When initializing, StumpWM seems to use ~ as the working directory...
   (concatenate 'string
 	       (namestring (probe-file "."))
 	       ".stumpwm.d/"
 	       "stump_conf.lisp"))
- (load (concatenate 'string
-		    (namestring (probe-file "."))
-		    ".stumpwm.d/"
-		    "stump_conf.lisp"))
+
+(defvar *tangler-path*
+  (concatenate 'string
+	       (namestring (probe-file "."))
+	       ".stumpwm.d/"
+	       "tangle.elisp"))
+
+(if
+ (probe-file *tangled-path*)
+ (load *tangled-path*)
  (progn
-   (sb-ext:run-program (concatenate 'string
-				    (namestring (probe-file "."))
-				    ".stumpwm.d/"
-				    "tangle.elisp")
-		       ())
-    (load (concatenate 'string
-		    (namestring (probe-file "."))
-		    ".stumpwm.d/"
-		    "stump_conf.lisp"))))
+   (sb-ext:run-program *tangler-path* ())
+   (load *tangled-path*)))
