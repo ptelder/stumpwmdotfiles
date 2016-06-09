@@ -1,0 +1,5 @@
+#!/usr/bin/emacs --script
+
+(package-initialize)
+(require 'ob-tangle)
+(org-babel-tangle-file "./stump_conf.org")
