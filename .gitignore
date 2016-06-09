@@ -1,7 +1,5 @@
 *~
 \#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
 *.elc
 auto-save-list
 tramp
@@ -18,8 +16,7 @@ tramp
 emacs_config.el
 ido.last
 smex-items
-/customize-persistence.el
 url
 server/server
-cider-history
 session.*
+stump_conf.lisp
