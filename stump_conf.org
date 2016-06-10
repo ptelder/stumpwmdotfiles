@@ -14,6 +14,8 @@ This is my first stab at getting StumpWM up and comfy.
 
 * Welcome Message
 
+Using fortune, but Stump isn't using the normal conventions for escape sequences. More research will be needed. For now, restricting Fortune to 120 characters should keep things from getting too messy. 
+
 #+BEGIN_SRC lisp 
 
 (setf *startup-message*         
@@ -27,4 +29,24 @@ This is my first stab at getting StumpWM up and comfy.
               :while line
               :collect line))
           (sb-ext:process-close p))))))
+#+END_SRC
+
+* TODO Swank & Slime
+
+Grabbed a snippet from Emacs Wiki. Needs a bit of cleanup and magic to 
+autodetect the location of Slime rather than the hardcode which will break
+badly on updates.
+
+#+BEGIN_SRC lisp
+
+(load "/home/pliny/.emacs.d/elpa/slime-20160521.915/swank-loader.lisp")
+(swank-loader:init)
+(defcommand swank () ()
+    (swank:create-server :port 4005
+                       :style swank:*communication-style*
+                       :dont-close t)
+  (echo-string (current-screen) 
+	       "Starting swank. M-x slime-connect RET RET, then (in-package stumpwm)."))
+(swank)
+
 #+END_SRC
