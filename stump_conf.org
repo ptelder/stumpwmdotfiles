@@ -39,7 +39,7 @@ badly on updates.
 
 #+BEGIN_SRC lisp
 
-(load "/home/pliny/.emacs.d/elpa/slime-20160521.915/swank-loader.lisp")
+(load "/home/pliny/.emacs.d/elpa/slime-20160704.1500/swank-loader.lisp")
 (swank-loader:init)
 (defcommand swank () ()
     (swank:create-server :port 4005
@@ -50,3 +50,31 @@ badly on updates.
 (swank)
 
 #+END_SRC
+
+* TODO Terminal Settings
+
+** TODO Check for .Xresources and insert rxvt settings if needed.
+
+** Check for existing urvxtd (in case of reload) and start it if none detected
+
+#+BEGIN_SRC lisp 
+(let ((urxvt (sb-ext:run-program "/usr/bin/pidof" '("urxvtd"))))
+     (if (= (sb-ext:process-exit-code urxvt) 1)
+        (sb-ext:run-program "/usr/bin/urxvtd" '("-q" "-o" "-f"))
+     )
+
+)
+#+END_SRC
+
+** Swap urxvt for xterm
+
+#+BEGIN_SRC lisp 
+
+(defcommand urxvt () ()
+  "Start urxvt or switch to it if it is already running..."
+  (run-or-raise "urxvt" '(:instance "urxvt")))
+(define-key *root-map* (kbd "c") "urxvt")
+ 
+#+END_SRC
+
+* TODO Browser Settings
