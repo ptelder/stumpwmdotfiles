@@ -70,10 +70,10 @@ badly on updates.
 
 #+BEGIN_SRC lisp 
 
-(defcommand urxvt () ()
+(defcommand urxvtc () ()
   "Start urxvt or switch to it if it is already running..."
-  (run-or-raise "urxvt" '(:instance "urxvt")))
-(define-key *root-map* (kbd "c") "urxvt")
+  (run-or-raise "urxvtc" '(:instance "urxvtc")))
+(define-key *root-map* (kbd "c") "urxvtc")
  
 #+END_SRC
 
