@@ -20,7 +20,7 @@ Using fortune, but Stump isn't using the normal conventions for escape sequences
 
 (setf *startup-message*         
   (format nil "~{~A~^ ~}" 
-    (let ((p (sb-ext:run-program "/usr/bin/fortune" '("-as" "-n 120") :output :stream)))
+    (let ((p (sb-ext:run-program "/run/current-system/sw/bin/fortune" '("-as" "-n 120") :output :stream)))
       (when p
         (unwind-protect
           (with-open-stream (o (sb-ext:process-output p))
@@ -39,10 +39,10 @@ badly on updates.
 
 #+BEGIN_SRC lisp
 
-(load "/home/pliny/.emacs.d/elpa/slime-20160704.1500/swank-loader.lisp")
+(load "/home/pliny/.emacs.d/elpa/slime-20160821.1352/swank-loader.lisp")
 (swank-loader:init)
 (defcommand swank () ()
-    (swank:create-server :port 4005
+    (swank:create-server :port 4207
                        :style swank:*communication-style*
                        :dont-close t)
   (echo-string (current-screen) 
@@ -58,9 +58,9 @@ badly on updates.
 ** Check for existing urvxtd (in case of reload) and start it if none detected
 
 #+BEGIN_SRC lisp 
-(let ((urxvt (sb-ext:run-program "/usr/bin/pidof" '("urxvtd"))))
+(let ((urxvt (sb-ext:run-program "/run/current-system/sw/bin/pidof" '("urxvtd"))))
      (if (= (sb-ext:process-exit-code urxvt) 1)
-        (sb-ext:run-program "/usr/bin/urxvtd" '("-q" "-o" "-f"))
+        (sb-ext:run-program "/run/current-system/sw/bin/urxvtd" '("-q" "-o" "-f"))
      )
 
 )

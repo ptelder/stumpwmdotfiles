@@ -1,4 +1,4 @@
-#!/usr/bin/emacs --script
+#!/run/current-system/sw/bin/emacs --script
 
 (package-initialize)
 (require 'ob-tangle)
