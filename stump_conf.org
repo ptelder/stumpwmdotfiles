@@ -39,7 +39,7 @@ badly on updates.
 
 #+BEGIN_SRC lisp
 
-(load "/home/pliny/.emacs.d/elpa/slime-20160821.1352/swank-loader.lisp")
+(load "/home/pliny/.emacs.d/elpa/slime-20160907.602/swank-loader.lisp")
 (swank-loader:init)
 (defcommand swank () ()
     (swank:create-server :port 4207
@@ -78,3 +78,17 @@ badly on updates.
 #+END_SRC
 
 * TODO Browser Settings
+* TODO Modeline
+
+#+BEGIN_SRC lisp 
+(stumpwm:toggle-mode-line (stumpwm:current-screen)
+                          (stumpwm:current-head))
+
+(load-module "battery-portable")
+
+(setf stumpwm:*screen-mode-line-format*
+      (list "%B | " 
+            '(:eval (stumpwm:run-shell-command "date" t) " | %W | ")))
+
+
+#+END_SRC
